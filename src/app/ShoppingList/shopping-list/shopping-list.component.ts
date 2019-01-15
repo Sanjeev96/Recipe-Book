@@ -19,9 +19,9 @@ export class ShoppingListComponent implements OnInit {
 
 
   }
-    //makes type paramater the model and then push object into array
+  //makes type paramater the model and then push object into array
   onIngredientAdded(Ingred: Ingredients) {
-      this.ingredients.push(Ingred); 
+    this.ingredients.push(Ingred);
   }
 
 } 
