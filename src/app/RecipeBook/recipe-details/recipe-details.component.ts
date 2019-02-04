@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, ViewChildren } from '@angular/core';
 import { Recipe } from 'src/app/Shared/recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -9,9 +10,20 @@ import { Recipe } from 'src/app/Shared/recipe.model';
 export class RecipeDetailsComponent implements OnInit {
 
   @Input() recipe: Recipe;
-  constructor() { }
+
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+  }
+
+  OnAddIngredToList() {
+    if (this.recipe.ingredients !== null) {
+    this.recipeService.AddIngredToList(this.recipe.ingredients);
+    alert('Success: Added to shopping-list')
+  }else {
+    alert('ERROR: no Ingredients to add to list')
+  }
+    
   }
 
 }

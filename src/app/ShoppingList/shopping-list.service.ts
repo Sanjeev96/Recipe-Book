@@ -11,7 +11,7 @@ export class ShoppingListService {
     new Ingredients('rice bag', 1)
   ];
 
-  public IngredChange= new EventEmitter<Ingredients[]>();
+  public IngredChange = new EventEmitter<Ingredients[]>();
 
   constructor() { }
 
@@ -22,6 +22,12 @@ export class ShoppingListService {
   getAddedIngredients(Ingred: Ingredients) {
     this.ingredients.push(Ingred);
     this.IngredChange.emit(this.ingredients.slice());
+  }
+
+
+  addRecipeIngredients(ingredients: Ingredients[]) {
+    this.ingredients.push(...ingredients); // "..." is es6 spread operator which turns and array of elements into a list of elements and al
+    this.IngredChange.emit(this.ingredients.slice()); // emit a copy of ingredients to infrom that list has changed
   }
 
 }
