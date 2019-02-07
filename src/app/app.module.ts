@@ -11,6 +11,7 @@ import { RecipeItemsComponent } from './RecipeBook/recipe-items/recipe-items.com
 import { RecipeDetailsComponent } from './RecipeBook/recipe-details/recipe-details.component';
 import { RecipeComponent } from './RecipeBook/recipe/recipe.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
