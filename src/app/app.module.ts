@@ -12,6 +12,7 @@ import { RecipeDetailsComponent } from './RecipeBook/recipe-details/recipe-detai
 import { RecipeComponent } from './RecipeBook/recipe/recipe.component';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './Shared/dropdown.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DropdownDirective } from './Shared/dropdown.directive';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
