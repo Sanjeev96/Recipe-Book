@@ -16,7 +16,7 @@ export class ShoppingListComponent implements OnInit ,OnChanges {
 
   ngOnInit() {
     this.ingredients = this.shoppingService.getIngredients();
-    
+
     this.shoppingService.IngredChange
       .subscribe((Ingred: Ingredients[]) => {
         this.ingredients = Ingred
@@ -26,4 +26,4 @@ export class ShoppingListComponent implements OnInit ,OnChanges {
   ngOnChanges(){
 
   }
-} 
+}

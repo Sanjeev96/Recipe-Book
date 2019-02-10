@@ -26,8 +26,10 @@ export class ShoppingListService {
 
 
   addRecipeIngredients(ingredients: Ingredients[]) {
-    this.ingredients.push(...ingredients); // "..." is es6 spread operator which turns and array of elements into a list of elements and al
-    this.IngredChange.emit(this.ingredients.slice()); // emit a copy of ingredients to infrom that list has changed
+    // tslint:disable-next-line:max-line-length
+    this.ingredients.push(...ingredients); // "..." is es6 spread operator which turns and array of elements into a list - USED FOR ADDING INGREDIENTS FROM A RECIPE
+    // tslint:disable-next-line:max-line-length
+    this.IngredChange.emit(this.ingredients.slice()); // emit a copy of ingredients to infrom that list has changed  - USED FOR UPDATING INGREDIENT(S) FROM SHOPPING-LIST
   }
 
 }

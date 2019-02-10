@@ -17,13 +17,17 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   OnAddIngredToList() {
-    if (this.recipe.ingredients !== null) {
+  if (this.recipe.ingredients !== null) {
     this.recipeService.AddIngredToList(this.recipe.ingredients);
-    alert('Success: Added to shopping-list')
-  }else {
-    alert('ERROR: no Ingredients to add to list')
-  }
-    
-  }
+      alert('Success: Added to shopping-list');
+      } else {
+        alert('ERROR: no Ingredients to add to list');
+   }
+ }
+
+ OnEditRecipe() {
+   console.log('edit function will go here');
+
+ }
 
 }
