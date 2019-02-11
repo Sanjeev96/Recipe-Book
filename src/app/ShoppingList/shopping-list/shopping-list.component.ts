@@ -8,7 +8,7 @@ import { ShoppingListService } from '../shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss']
 })
-export class ShoppingListComponent implements OnInit ,OnChanges {
+export class ShoppingListComponent implements OnInit , OnChanges {
 
   ingredients: Ingredients[];
 
@@ -19,11 +19,11 @@ export class ShoppingListComponent implements OnInit ,OnChanges {
 
     this.shoppingService.IngredChange
       .subscribe((Ingred: Ingredients[]) => {
-        this.ingredients = Ingred
+        this.ingredients = Ingred;
       });
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
 
   }
 }

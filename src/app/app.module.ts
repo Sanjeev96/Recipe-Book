@@ -13,6 +13,7 @@ import { RecipeComponent } from './RecipeBook/recipe/recipe.component';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './Shared/dropdown.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     RecipeDetailsComponent,
     RecipeComponent,
     HeaderComponent,
-    DropdownDirective
+    DropdownDirective,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

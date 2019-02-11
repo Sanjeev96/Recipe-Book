@@ -6,29 +6,37 @@
 
     <div class="navbar-default">
       <span>
-      <ul class="nav navbar-nav">
-        <!-- <li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>
-        <li><a href="#"(click)="onSelect('shopping-list')" >Shopping List</a></li> -->
-                <li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>
-        <li><a href="#"(click)="onSelect('shopping-list')" >Shopping List</a></li>
-      </ul>
-      <p class="pull-right" >{{from_firstNestApi_surname}}</p>
-      <p class="pull-right">&nbsp;</p>
-      <p class="pull-right" >{{from_firstNestApi_forename}}</p>
-    </span>
-      <ul class="nav navbar-nav navbar-right">
-      <li appDropdown class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button">Manage
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Save Data</a></li>
-          <li><a href="#">Fetch Data</a></li>
-
+        <ul class="nav navbar-nav">
+          <li>
+            <a
+              [routerLink]="['/recipe-book']"
+              routerLinkActive="router-link-active"
+              >Recipes</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/shopping-list']"
+              >Shopping List</a
+            >
+          </li>
         </ul>
-      </li>
-    </ul>
+        <p class="pull-right">{{ from_firstNestApi_surname }}</p>
+        <p class="pull-right">&nbsp;</p>
+        <p class="pull-right">{{ from_firstNestApi_forename }}</p>
+      </span>
+      <ul class="nav navbar-nav navbar-right">
+        <li appDropdown class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button"
+            >Manage
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Save Data</a></li>
+            <li><a href="#">Fetch Data</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
-
 </nav>

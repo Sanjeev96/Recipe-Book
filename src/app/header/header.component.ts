@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output() selectedSection = new EventEmitter<string>();
   public from_firstNestApi_forename: string;
   public from_firstNestApi_surname: string;
 
@@ -18,9 +17,5 @@ export class HeaderComponent implements OnInit {
       this.from_firstNestApi_forename = data[0]['forename'];
       this.from_firstNestApi_surname = data[1]['surname'];
     });
-  }
-
-  onSelect(section: string) {
-    this.selectedSection.emit(section);
   }
 }
