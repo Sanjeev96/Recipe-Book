@@ -8,15 +8,12 @@
       <span>
         <ul class="nav navbar-nav">
           <li>
-            <a
-              [routerLink]="['/recipe-book']"
-              routerLinkActive="router-link-active"
+            <a [routerLink]="['/recipe-book']" routerLinkActive="active"
               >Recipes</a
             >
           </li>
           <li>
-            <a
-              [routerLink]="['/shopping-list']"
+            <a [routerLink]="['/shopping-list']" routerLinkActive="active"
               >Shopping List</a
             >
           </li>
@@ -27,13 +24,13 @@
       </span>
       <ul class="nav navbar-nav navbar-right">
         <li appDropdown class="dropdown">
-          <a class="dropdown-toggle" href="#" role="button"
+          <a class="dropdown-toggle" role="button"
             >Manage
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Save Data</a></li>
-            <li><a href="#">Fetch Data</a></li>
+            <li><a>Save Data</a></li>
+            <li><a>Fetch Data</a></li>
           </ul>
         </li>
       </ul>
