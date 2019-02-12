@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, ViewChildren } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/Shared/recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -8,26 +9,32 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-details.component.scss']
 })
 export class RecipeDetailsComponent implements OnInit {
+  recipe: Recipe;
+  id: number;
 
-  @Input() recipe: Recipe;
-
-  constructor(private recipeService: RecipeService) { }
+  constructor(
+    private recipeService: RecipeService,
+    private router: Router,
+    private activeRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.activeRoute.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.recipe = this.recipeService.getRecipe(this.id);
+    }); // stores id
   }
 
   OnAddIngredToList() {
-  if (this.recipe.ingredients !== null) {
-    this.recipeService.AddIngredToList(this.recipe.ingredients);
+    if (this.recipe.ingredients !== null) {
+      this.recipeService.AddIngredToList(this.recipe.ingredients);
       alert('Success: Added to shopping-list');
-      } else {
-        alert('ERROR: no Ingredients to add to list');
-   }
- }
+    } else {
+      alert('ERROR: no Ingredients to add to list');
+    }
+  }
 
- OnEditRecipe() {
-   console.log('edit function will go here');
-
- }
-
+  onEditRecipe() {
+    this.router.navigate(['edit'], { relativeTo: this.activeRoute });
+  }
 }

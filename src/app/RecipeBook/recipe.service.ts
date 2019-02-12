@@ -39,6 +39,10 @@ export class RecipeService {
     return this.recipes.slice(); // slice is used to make a new array, (copy)
   }
 
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
+
   getSelectedRecipe() {
     return this.recipeSelected;
   }

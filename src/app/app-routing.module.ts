@@ -1,3 +1,4 @@
+import { RecipeEditComponent } from './RecipeBook/recipe-edit/recipe-edit.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -9,12 +10,16 @@ import { RecipeDetailsComponent } from './RecipeBook/recipe-details/recipe-detai
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
+
   {
     path: 'recipe-book',
     component: RecipeComponent,
     children: [
       { path: '', component: RecipeStartPageComponent },
-      { path: ':id', component: RecipeDetailsComponent }
+      { path: 'new', component: RecipeEditComponent },
+      { path: ':id', component: RecipeDetailsComponent },
+      { path: ':id/edit', component: RecipeEditComponent }
+
     ]
   },
   { path: 'shopping-list', component: ShoppingListComponent },

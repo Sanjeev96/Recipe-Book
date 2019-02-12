@@ -15,6 +15,7 @@ import { DropdownDirective } from './Shared/dropdown.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecipeStartPageComponent } from './RecipeBook/recipe-start-page/recipe-start-page.component';
+import { RecipeEditComponent } from './RecipeBook/recipe-edit/recipe-edit.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RecipeStartPageComponent } from './RecipeBook/recipe-start-page/recipe-
     HeaderComponent,
     DropdownDirective,
     PageNotFoundComponent,
-    RecipeStartPageComponent
+    RecipeStartPageComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,

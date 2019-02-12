@@ -1,5 +1,6 @@
 <div class="cursorPointer">
-  <a (click)="onItemClick()" class="list-group-item clearfix">
+  <a [routerLink]="[index]" routerLinkActive="active"
+  class="list-group-item clearfix">
     <div class="pull-left">
       <span class="pull-right">
         <button type="button" class="close" aria-label="Close">
