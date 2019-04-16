@@ -1,5 +1,6 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class RecipeEditComponent implements OnInit {
   private id: number;
   private editMode = false;
-  constructor(private activeRoute: ActivatedRoute) {}
+  constructor(private activeRoute: ActivatedRoute, private recipeService: RecipeService) {}
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: Params) => {
