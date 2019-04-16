@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Recipe } from '../Shared/recipe.model';
 import { Ingredients } from '../Shared/ingredients';
 import { ShoppingListService } from '../ShoppingList/shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,8 @@ export class RecipeService {
       ])
   ];
 
-  public recipeSelected = new EventEmitter<Recipe>();
-
+  //public recipeSelected = new EventEmitter<Recipe>();
+  public recipeSelected = new Subject<Recipe>(); // used instead of event emitter Subject can be consumed by more than one subscriber (mutlicasting)
 
   getRecipes() {
     // return this.recipes;(list) dirrect reference meaning exact copy.. chaging this array anywhere esle would change it in the service..need to make a copy and use that

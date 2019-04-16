@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Ingredients } from '../Shared/ingredients';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ShoppingListService {
     new Ingredients('rice bag', 1)
   ];
 
-  public IngredChange = new EventEmitter<Ingredients[]>();
+  public IngredChange = new Subject<Ingredients[]>();
 
   constructor() { }
 
@@ -21,7 +22,7 @@ export class ShoppingListService {
 
   getAddedIngredients(Ingred: Ingredients) {
     this.ingredients.push(Ingred);
-    this.IngredChange.emit(this.ingredients.slice());
+    this.IngredChange.next(this.ingredients.slice());
   }
 
 
@@ -29,7 +30,7 @@ export class ShoppingListService {
     // tslint:disable-next-line:max-line-length
     this.ingredients.push(...ingredients); // "..." is es6 spread operator which turns and array of elements into a list - USED FOR ADDING INGREDIENTS FROM A RECIPE
     // tslint:disable-next-line:max-line-length
-    this.IngredChange.emit(this.ingredients.slice()); // emit a copy of ingredients to infrom that list has changed  - USED FOR UPDATING INGREDIENT(S) FROM SHOPPING-LIST
+    this.IngredChange.next(this.ingredients.slice()); // emit a copy of ingredients to infrom that list has changed  - USED FOR UPDATING INGREDIENT(S) FROM SHOPPING-LIST
   }
 
 }
