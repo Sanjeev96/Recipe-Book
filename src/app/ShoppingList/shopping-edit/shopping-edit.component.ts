@@ -1,6 +1,14 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { Ingredients } from 'src/app/Shared/ingredients';
 import { ShoppingListService } from '../shopping-list.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -8,28 +16,27 @@ import { ShoppingListService } from '../shopping-list.service';
   styleUrls: ['./shopping-edit.component.scss']
 })
 export class ShoppingEditComponent implements OnInit {
+  shopEditForm: FormGroup;
 
-  @ViewChild('nameInput') nameInput: ElementRef;
-  @ViewChild('amountInput') amountInput: ElementRef;
-
-  constructor(private shoppingService: ShoppingListService) {
-
-  }
+  constructor(private shoppingService: ShoppingListService) {}
 
   ngOnInit() {
-
+    this.shopEditForm = new FormGroup({
+      itemName: new FormControl(null, Validators.required),
+      amount: new FormControl(null, [Validators.required, Validators.pattern('[1-9]*$')])
+    });
   }
-  addIngredient() {
-    const ingredientName = this.nameInput.nativeElement.value;
-    const ingredientAmount = this.amountInput.nativeElement.value;
+  onSubmit() {
+    console.log(this.shopEditForm);
 
-    const newIngredObject = new Ingredients(ingredientName, ingredientAmount);
-    this.shoppingService.getAddedIngredients(newIngredObject);
+    const value = this.shopEditForm.value;
+    const newIngredObject = new Ingredients(value.itemName, value.amount);
+    if (value.itemName !== null && value.amount !== null) {
+      this.shoppingService.getAddedIngredients(newIngredObject);
+    } else {
 
+    }
   }
 
-  clearAddFields() {
-    this.nameInput.nativeElement.value = null;
-    this.amountInput.nativeElement.value = null;
-  }
+  clearAddFields() {}
 }
