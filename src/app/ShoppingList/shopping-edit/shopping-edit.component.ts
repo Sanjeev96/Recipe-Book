@@ -23,7 +23,7 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
     this.shopEditForm = new FormGroup({
       itemName: new FormControl(null, Validators.required),
-      amount: new FormControl(null, [Validators.required, Validators.pattern('[1-9]*$')])
+      amount: new FormControl(null, [Validators.required, Validators.pattern('[0-9]*$')])
     });
   }
   onSubmit() {
