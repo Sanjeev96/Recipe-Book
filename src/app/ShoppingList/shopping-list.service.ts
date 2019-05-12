@@ -13,8 +13,12 @@ export class ShoppingListService {
   ];
 
   public IngredChange = new Subject<Ingredients[]>();
-
+  startedEditing = new Subject<Number>();
   constructor() { }
+
+  getIngred(i: number) {
+    return this.ingredients[i];
+  }
 
   getIngredients() {
     return this.ingredients.slice();
