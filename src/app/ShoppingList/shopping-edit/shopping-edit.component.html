@@ -39,11 +39,11 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" [disabled]='shopEditForm.invalid' type="submit">Add</button>&nbsp;
-          <button class="btn btn-danger" type="button">Delete</button>&nbsp;
+          <button class="btn btn-success" [disabled]='shopEditForm.invalid' type="submit">{{ editmode ? 'update': 'Add'}}</button>&nbsp; <!--if else statment colon is else-->
+          <button *ngIf="editmode === true" class="btn btn-danger" (click)="onDelete()" type="button">Delete</button>&nbsp;
           <button
             class="btn btn-primary"
-            (click)="clearAddFields()"
+            (click)="onClearAddFields()"
             type="button"
           >
             Clear

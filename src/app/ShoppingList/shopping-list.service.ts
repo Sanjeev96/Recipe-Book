@@ -13,11 +13,21 @@ export class ShoppingListService {
   ];
 
   public IngredChange = new Subject<Ingredients[]>();
-  startedEditing = new Subject<Number>();
+  startedEditing = new Subject<Number>(); //subject listened to in the edit component for any selected item id
   constructor() { }
 
   getIngred(i: number) {
     return this.ingredients[i];
+  }
+
+  updateIngred(i: number, newIngred: Ingredients) { // gets index of existing ingredient
+    this.ingredients[i] = newIngred;
+    this.IngredChange.next(this.ingredients.slice());
+  }
+
+  deleteIngred(i: number) {
+    this.ingredients.splice(i, 1); // removed item from array(shopping-list)
+    this.IngredChange.next(this.ingredients.slice()); // passes a copy of updated array(shopping-list)
   }
 
   getIngredients() {
