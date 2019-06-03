@@ -1,7 +1,7 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -42,23 +42,35 @@ export class RecipeEditComponent implements OnInit {
       if (recipe['ingredients']) {
         for (let ingred of recipe.ingredients) {
           recipeIngreds.push(
-            new FormGroup({ // this form group is pushed onto recipeIngred array[]
-              ingredient: new FormControl(ingred.name),
-              amount: new FormControl(ingred.amount)
+            new FormGroup({
+              // this form group is pushed onto recipeIngred array[]
+              name: new FormControl(ingred.name, Validators.required),
+              amount: new FormControl(ingred.amount, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/)
+              ])
             })
           );
         }
       }
     }
 
-      this.RecipeForm = new FormGroup({
-        dish: new FormControl(dishName),
-        imagePath: new FormControl(recipeImagePath),
-        description: new FormControl(dishDescription),
-       recipeIngredients: recipeIngreds // setting recipe ingredient array to html
-      });
-    }
+    this.RecipeForm = new FormGroup({
+      name: new FormControl(dishName, Validators.required),
+      imagePath: new FormControl(recipeImagePath, Validators.required),
+      description: new FormControl(dishDescription, Validators.required),
+      recipeIngredients: recipeIngreds // setting recipe ingredient array to html
+    });
+  }
 
+  onAddIngredient() {
+    (<FormArray>this.RecipeForm.get('recipeIngredients')).push(
+      new FormGroup({
+        name: new FormControl(''),
+        amount: new FormControl('')
+      })
+    );
+  }
 
   getControls() {
     return (<FormArray>this.RecipeForm.get('recipeIngredients')).controls;

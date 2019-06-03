@@ -31,7 +31,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       itemName: new FormControl(null, Validators.required),
       amount: new FormControl(null, [
         Validators.required,
-        Validators.pattern('^[1-9]+[0-9]*$')
+        Validators.pattern(/^[1-9]+[0-9]*$/)
       ]) //0 downwards doesnt work
     });
     // subscription triggers when item is selected for editing.
