@@ -11,6 +11,8 @@ export class RecipeService {
 
   constructor(private shoppingService: ShoppingListService) { }
 
+  public recipeChanged = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
     new Recipe(
       'Cheese Toast',
@@ -50,5 +52,21 @@ export class RecipeService {
 
   AddIngredToList(ingredients: Ingredients[]) {
     this.shoppingService.addRecipeIngredients(ingredients);
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipeChanged.next(this.recipes.slice()); // used to emit values from edit mode to update recipes
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice()); // used to emit values from edit mode to add recipes
+  }
+
+  deleteRecipe(index: number, newRecipe:Recipe) {
+
+//DELETE RECIPE CODE PASS OBSERVABLE FROM RECIPE-EDIT THROUGH SERVICE USING .NEXT
+//THEN SUBSCRIBE INSIDE NGONIT OF RECIPELIST TO TRIGGER REMOVAL
   }
 }
