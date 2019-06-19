@@ -2,13 +2,8 @@
   <a [routerLink]="[index]" routerLinkActive="active"
   class="list-group-item clearfix">
     <div class="pull-left">
-      <span class="pull-right">
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </span>
       <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-      <p class="list-group-item-text">{{ recipe.desc }}</p>
+      <p class="list-group-item-text">{{ recipe.description }}</p>
     </div>
     <span class="pull-right">
       <img

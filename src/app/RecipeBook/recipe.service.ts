@@ -8,8 +8,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class RecipeService {
-
-  constructor(private shoppingService: ShoppingListService) { }
+  constructor(private shoppingService: ShoppingListService) {}
 
   public recipeChanged = new Subject<Recipe[]>();
 
@@ -22,7 +21,8 @@ export class RecipeService {
         new Ingredients('bread', 2),
         new Ingredients('onions', 1),
         new Ingredients('cheese (grams)', 150)
-      ]),
+      ]
+    ),
     new Recipe(
       'Spicy Beans',
       'Tin of beans, dice onions and fry till crispy, add beans and sliced chill',
@@ -31,7 +31,8 @@ export class RecipeService {
         new Ingredients('Tin of Beans', 1),
         new Ingredients('Onion', 1),
         new Ingredients('chillies', 1)
-      ])
+      ]
+    )
   ];
 
   //public recipeSelected = new EventEmitter<Recipe>();
@@ -64,9 +65,8 @@ export class RecipeService {
     this.recipeChanged.next(this.recipes.slice()); // used to emit values from edit mode to add recipes
   }
 
-  deleteRecipe(index: number, newRecipe:Recipe) {
-
-//DELETE RECIPE CODE PASS OBSERVABLE FROM RECIPE-EDIT THROUGH SERVICE USING .NEXT
-//THEN SUBSCRIBE INSIDE NGONIT OF RECIPELIST TO TRIGGER REMOVAL
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1); // remove selected item in list via index
+    this.recipeChanged.next(this.recipes.slice()); // pass in updated list of items in list after removal code triggered
   }
 }
