@@ -16,6 +16,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RecipeStartPageComponent } from './RecipeBook/recipe-start-page/recipe-start-page.component';
 import { RecipeEditComponent } from './RecipeBook/recipe-edit/recipe-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataStorageService } from './Shared/data-storage.service';
+import { RecipeService } from './RecipeBook/recipe.service';
 
 
 
@@ -42,7 +44,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DataStorageService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

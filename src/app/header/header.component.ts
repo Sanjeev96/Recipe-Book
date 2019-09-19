@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataStorageService } from '../Shared/data-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,17 @@ export class HeaderComponent implements OnInit {
   public from_firstNestApi_forename: string;
   public from_firstNestApi_surname: string;
 
-  constructor(private htttp: HttpClient) {}
+  constructor(private htttp: HttpClient, private dataStorageService: DataStorageService) {}
 
   ngOnInit() {
-    this.htttp.get('http://localhost:3000/posts').subscribe(data => {
-      this.from_firstNestApi_forename = data[0]['forename'];
-      this.from_firstNestApi_surname = data[1]['surname'];
-    });
+    // this.htttp.get('http://localhost:3000/posts').subscribe(data => {
+    //   this.from_firstNestApi_forename = data[0]['forename'];
+    //   this.from_firstNestApi_surname = data[1]['surname'];
+    // });
+  }
+
+  onPostRecipes() {
+    this.dataStorageService.saveRecipes();
+
   }
 }

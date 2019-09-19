@@ -4,9 +4,7 @@ import { Ingredients } from '../Shared/ingredients';
 import { ShoppingListService } from '../ShoppingList/shopping-list.service';
 import { Subject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class RecipeService {
   constructor(private shoppingService: ShoppingListService) {}
 
