@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RecipeService } from '../RecipeBook/recipe.service';
 import { map, tap, catchError } from 'rxjs/operators';
+import { Recipe } from './recipe.model';
 
 @Injectable()
 export class DataStorageService {
@@ -18,8 +19,11 @@ constructor(private http: HttpClient, private recipeService: RecipeService) {}
     }
 
     fetchRecipes() {
-        return this.http.get('https://recipebookdb-c6817.firebaseio.com/recipes.json')
-        .subscribe(recipes => console.log('fetch data = ', recipes)
+        return this.http.get<Recipe[]>('https://recipebookdb-c6817.firebaseio.com/recipes.json')
+        .subscribe(recipes => {
+            console.log('fetch data = ', recipes);
+            this.recipeService.setRecipes(recipes); // value in recipe service set to db values passed via method param  
+        }
         );
     }
 }
