@@ -19,20 +19,19 @@ constructor(private http: HttpClient, private recipeService: RecipeService) {}
     }
 
     fetchRecipes() {
-      this.http.get<Recipe[]>('https://recipebookdb-c6817.firebaseio.com/recipes.json')
+     return this.http.get<Recipe[]>('https://recipebookdb-c6817.firebaseio.com/recipes.json')
       .pipe(
           map(recipes => {
             return recipes.map(recipe => {
                     return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
                 //    |copy existing data of ingred|   |if trueish|    |set to data retrieved| ELSE |emtpy array|
-                }
-            );
-      }))
-        .subscribe(recipes => {
-            console.log('fetch data = ', recipes);
+                });
+        }),
+        tap(recipes => {
             this.recipeService.setRecipes(recipes); // value in recipe service set to db values passed via method param
-        }
-        );
+
+        })
+      );
     }
 }
 

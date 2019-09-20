@@ -18,6 +18,7 @@ import { RecipeEditComponent } from './RecipeBook/recipe-edit/recipe-edit.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataStorageService } from './Shared/data-storage.service';
 import { RecipeService } from './RecipeBook/recipe.service';
+import { RecipeResolverSerivce } from './RecipeBook/recipe/recipe-resolver.service';
 
 
 
@@ -44,7 +45,7 @@ import { RecipeService } from './RecipeBook/recipe.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [DataStorageService, RecipeService],
+  providers: [DataStorageService, RecipeService, RecipeResolverSerivce],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

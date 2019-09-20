@@ -3,10 +3,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { RecipeComponent } from './RecipeBook/recipe/recipe.component';
 import { ShoppingListComponent } from './ShoppingList/shopping-list/shopping-list.component';
 import { RecipeStartPageComponent } from './RecipeBook/recipe-start-page/recipe-start-page.component';
 import { RecipeDetailsComponent } from './RecipeBook/recipe-details/recipe-details.component';
+import { RecipeResolverSerivce } from './RecipeBook/recipe/recipe-resolver.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
@@ -17,8 +19,9 @@ const routes: Routes = [
     children: [
       { path: '', component: RecipeStartPageComponent },
       { path: 'new', component: RecipeEditComponent },
-      { path: ':id', component: RecipeDetailsComponent },
-      { path: ':id/edit', component: RecipeEditComponent }
+      // tslint:disable-next-line: max-line-length
+      { path: ':id', component: RecipeDetailsComponent, resolve: [RecipeResolverSerivce] }, // whenever route is loaded (refresh page for instance <check resolver comment>
+      { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipeResolverSerivce] }
 
     ]
   },

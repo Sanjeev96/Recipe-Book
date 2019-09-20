@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onFetchRecipes() {
-    this.dataStorageService.fetchRecipes();
+    this.dataStorageService.fetchRecipes().subscribe(); 
+    // dont need to pass method in subscribe because we are not bothered about response value, just need to sub for get Req to work
   }
 }
