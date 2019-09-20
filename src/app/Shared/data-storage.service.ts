@@ -19,11 +19,22 @@ constructor(private http: HttpClient, private recipeService: RecipeService) {}
     }
 
     fetchRecipes() {
-        return this.http.get<Recipe[]>('https://recipebookdb-c6817.firebaseio.com/recipes.json')
+      this.http.get<Recipe[]>('https://recipebookdb-c6817.firebaseio.com/recipes.json')
+      .pipe(
+          map(recipes => {
+            return recipes.map(recipe => {
+                    return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
+                //    |copy existing data of ingred|   |if trueish|    |set to data retrieved| ELSE |emtpy array|
+                }
+            );
+      }))
         .subscribe(recipes => {
             console.log('fetch data = ', recipes);
-            this.recipeService.setRecipes(recipes); // value in recipe service set to db values passed via method param  
+            this.recipeService.setRecipes(recipes); // value in recipe service set to db values passed via method param
         }
         );
     }
 }
+
+
+// '.map() is a js array function which allows the user to transform the elements in an array.
