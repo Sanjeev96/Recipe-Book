@@ -19,10 +19,12 @@ const routes: Routes = [
     children: [
       { path: '', component: RecipeStartPageComponent },
       { path: 'new', component: RecipeEditComponent },
-      // tslint:disable-next-line: max-line-length
-      { path: ':id', component: RecipeDetailsComponent, resolve: [RecipeResolverSerivce] }, // whenever route is loaded (refresh page for instance <check resolver comment>
-      { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipeResolverSerivce] }
-
+      { path: ':id', component: RecipeDetailsComponent,
+      resolve: [RecipeResolverSerivce] // whenever route is loaded (refresh page for instance <check resolver comment>
+      },
+      { path: ':id/edit', component: RecipeEditComponent,
+        resolve: [RecipeResolverSerivce] // SAME as above comment
+      }
     ]
   },
   { path: 'shopping-list', component: ShoppingListComponent },
