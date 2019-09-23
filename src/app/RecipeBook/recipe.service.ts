@@ -47,7 +47,7 @@ export class RecipeService {
   }
 
   getRecipes() {
-    // return this.recipes;(list) dirrect reference meaning exact copy.. chaging this 
+    // return this.recipes;(list) dirrect reference meaning exact copy.. chaging this
     // array anywhere esle would change it in the service..need to make a copy and use that
     return this.recipes.slice(); // slice is used to make a new array, (copy)
   }
