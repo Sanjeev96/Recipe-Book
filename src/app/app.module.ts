@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataStorageService } from './Shared/data-storage.service';
 import { RecipeService } from './RecipeBook/recipe.service';
 import { RecipeResolverSerivce } from './RecipeBook/recipe/recipe-resolver.service';
+import { AuthenticationComponent } from './auth/authentication/authentication.component';
 
 
 
@@ -36,7 +37,8 @@ import { RecipeResolverSerivce } from './RecipeBook/recipe/recipe-resolver.servi
     DropdownDirective,
     PageNotFoundComponent,
     RecipeStartPageComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
