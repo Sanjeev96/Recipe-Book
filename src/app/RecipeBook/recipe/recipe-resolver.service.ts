@@ -14,10 +14,10 @@ export class RecipeResolverSerivce implements Resolve<Recipe[]> {
     resolve (route: ActivatedRouteSnapshot, rState: RouterStateSnapshot ) {
         const recipes = this.reicpeServce.getRecipes();
 
-        if (recipes.length === 0) {
+        if (recipes.length === 0) { // no recipes then (below)
         return this.dataStorageService.fetchRecipes();
         }  else {
-            return recipes;
+            return recipes; // if there is then no need to fetch again
         }
         // resolve runs everytime the route get loaded if data is not available then get Request triggered
     }
