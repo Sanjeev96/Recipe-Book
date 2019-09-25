@@ -41,7 +41,7 @@ export class AuthenticationComponent implements OnInit {
         this.isLoading = false;
         this.errorMessage = error.error.error.message;
       });
-    }, 1500);
+    }, 2000);
     }
 
   }

@@ -1,7 +1,9 @@
 <!-- THIS FORM USES TEMPLATE DRIVEN APPROACH -->
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    <div class="spinner-Container">
+      <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+   </div>
       <form *ngIf="!isLoading" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <div class="form-group">
       <label for="email">Email: </label>
