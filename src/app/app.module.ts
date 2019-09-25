@@ -20,6 +20,7 @@ import { DataStorageService } from './Shared/data-storage.service';
 import { RecipeService } from './RecipeBook/recipe.service';
 import { RecipeResolverSerivce } from './RecipeBook/recipe/recipe-resolver.service';
 import { AuthenticationComponent } from './auth/authentication/authentication.component';
+import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 
 
 
@@ -38,7 +39,8 @@ import { AuthenticationComponent } from './auth/authentication/authentication.co
     PageNotFoundComponent,
     RecipeStartPageComponent,
     RecipeEditComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { ShoppingListComponent } from './ShoppingList/shopping-list/shopping-lis
 import { RecipeStartPageComponent } from './RecipeBook/recipe-start-page/recipe-start-page.component';
 import { RecipeDetailsComponent } from './RecipeBook/recipe-details/recipe-details.component';
 import { RecipeResolverSerivce } from './RecipeBook/recipe/recipe-resolver.service';
+import { AuthenticationComponent } from './auth/authentication/authentication.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
     ]
   },
   { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'auth', component: AuthenticationComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

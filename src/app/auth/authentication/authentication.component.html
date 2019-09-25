@@ -1,3 +1,52 @@
-<p>
-  authentication works!
-</p>
+<!-- THIS FORM USES TEMPLATE DRIVEN APPROACH -->
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+      <form *ngIf="!isLoading" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+    <div class="form-group">
+      <label for="email">Email: </label>
+        <input 
+        class="form-control" 
+        type="email"
+        name="email"
+        ngModel
+        email
+        required> 
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="password">Password: </label>
+        <input 
+        class="form-control" 
+        type="password"
+        name="password"
+        ngModel
+        minlength="6"
+        required>
+    </div>
+    <br>
+    <div>
+    <button 
+    type="submit"
+    [disabled]="authForm.invalid"
+    class="btn-primary col-md-6 col-md-offset-3">{{ logginMode ? 'Login': 'Register' }}</button>
+    </div>
+    <br>
+    <br>
+    <div>
+        <button 
+        type="button"
+        (click)="onSwitchMode()"
+        class="btn-info col-md-6 col-md-offset-3">Switch to {{ logginMode ?  'Register': 'Login' }}</button>
+    </div>
+    <br>
+    <br>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+        <h2>Error register user</h2>
+        <p>{{errorMessage}}</p>
+        <br>
+        <button class="btn btn-danger" (click)="sendPostError()">Okay</button>
+      </div>
+  </form>
+  </div>
+</div>
