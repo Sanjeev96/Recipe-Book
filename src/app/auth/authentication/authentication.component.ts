@@ -31,17 +31,19 @@ export class AuthenticationComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
-    setTimeout(() => {
       this.isLoading = true;
     this.authService.SendSignUp(email, password).subscribe(resData => {
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
 
   },
       error => {
-        this.isLoading = false;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 2000);
         this.errorMessage = error.error.error.message;
       });
-    }, 2000);
     }
 
   }
