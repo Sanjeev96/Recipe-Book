@@ -49,12 +49,12 @@
         <br>
         <button class="btn btn-danger" (click)="sendPostError()">Okay</button>
       </div>
-      <div class="alert alert-danger" *ngIf="connection === 'false'">
+      <!-- <div class="alert alert-danger" *ngIf="connection === 'false' && !errorMessage === 'EMAIL_EXISTS'">
           <h2>No internet connection availiable</h2>
           <p>Status : <b>OFFLINE</b></p>
           <br>
           <button class="btn btn-danger" (click)="CheckConnection()">Okay</button>
-        </div>
+        </div> -->
   </form>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService, AuthResponseData } from './authentication.service';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
 
@@ -45,34 +45,34 @@ export class AuthenticationComponent implements OnInit {
     );
     this.networkStatus();
 
-    if (this.logginMode) {
-      alert('not set up yet');
-    } else {
     const email = form.value.email;
     const password = form.value.password;
 
-      this.isLoading = true;
-    this.authService.SendSignUp(email, password).subscribe(resData => {
+    let authObs: Observable<AuthResponseData>;
+
+    if (this.logginMode) {
+       authObs = this.authService.Login(email, password);
+
+    } else {
+      authObs =  this.authService.SendSignUp(email, password);
+    }
+
+    // Call methods above then do subscription seeing as the process is the same
+    this.isLoading = true;
+    authObs.subscribe(resData => {
       setTimeout(() => {
         this.isLoading = false;
       }, 2000);
-
-  },
-      error => {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 2000);
-        switch (error.error.error.message) {
-          case 'EMAIL_EXISTS':
-          this.errorMessage = 'Email already exists!';
-          break;
-          default:
-            this.errorMessage = 'Unkown Error';
-        }
-      });
-    }
-
+    },
+    errorMessage => {
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
+      this.errorMessage = errorMessage;
+    });
   }
+
+
 
   sendPostError() {
     this.errorMessage = null;
