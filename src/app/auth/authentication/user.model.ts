@@ -12,7 +12,7 @@ export class User { // created with class so we can use 'new' keyword
         if (!this._tokenEXPdate || this._tokenEXPdate < new Date())  {
             return null;
         } else {
-            return this._token; // if with conditions then return value 
+            return this._token; // if with conditions then return value
         }
     }
 }

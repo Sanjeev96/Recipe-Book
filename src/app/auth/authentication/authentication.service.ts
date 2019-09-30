@@ -2,8 +2,9 @@ import { DataStorageService } from 'src/app/Shared/data-storage.service';
 import { RecipeService } from 'src/app/RecipeBook/recipe.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError, Subject } from 'rxjs';
+import { User } from './user.model';
 
 
 export interface AuthResponseData { // good practice to define the types of data that you get externally
@@ -19,6 +20,9 @@ export interface AuthResponseData { // good practice to define the types of data
 @Injectable({providedIn: 'root'}) // can add file here or in appmodule like other files and services
 export class AuthenticationService {
 
+    user = new Subject<User>();
+
+
     constructor (
         private dataStorage: DataStorageService,
        private recipeService: RecipeService,
@@ -33,7 +37,12 @@ export class AuthenticationService {
                 password: password,
                 returnSecureToken: true
               }
-            ).pipe(catchError(this.errorHandler));
+            ).pipe(catchError(this.errorHandler),
+            tap(resData => {
+                this.handleAuth(
+                    resData.email, resData.localId, resData.idToken, +resData.expiresIn); // '+' infront like ParseInt AND parseFloat
+            }),
+            );
         }
 
         Login(email: string, password: string) {
@@ -45,11 +54,24 @@ export class AuthenticationService {
                     returnSecureToken: true
                   }
                 ).pipe(
-                    (catchError(this.errorHandler)));
+                    (catchError(this.errorHandler),
+                    tap(resData => {
+                        this.handleAuth(
+                         resData.email, resData.localId, resData.idToken, +resData.expiresIn); // '+' infront like ParseInt AND parseFloat
+                    }
+                 )));
         }
 
+        // method to handle sign in, for login and from successful registration
+        private handleAuth(email: string, userId: string, token: string, expIn: number) {
 
-        errorHandler(errorRes: HttpErrorResponse) { // error handled as a method as both buttons deal with errors on the same way
+                const expDate = new Date( new Date().getTime() + expIn * 1000);
+                const user = new User(email, userId, token, expDate);
+                    this.user.next(user); // emit currenlty logged in user;
+        }
+
+        private errorHandler(errorRes: HttpErrorResponse) { // error handled as a method as this logic is used twice, register and login
+
             let errorMessage = '';
             switch (errorRes.error.error.message) {
                 case 'EMAIL_EXISTS':
