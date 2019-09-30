@@ -37,3 +37,4 @@ constructor(private http: HttpClient, private recipeService: RecipeService) {}
 
 
 // '.map() is a js array function which allows the user to transform the elements in an array.
+// tap() rxjs operator, allows user to run some code without changing structure of response
