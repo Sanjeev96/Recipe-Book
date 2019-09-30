@@ -26,3 +26,4 @@ export class RecipeResolverSerivce implements Resolve<Recipe[]> {
 //  intermediate code, which can be executed when a link has been clicked and before a component is loaded
 // Purpose is to check that data is available
 // Code that runs before a route loads to ensure data route depends on is there.
+// If current data from db is there then get is not triggered to db, also this fixes issue for non data displaying when user refreshes app
