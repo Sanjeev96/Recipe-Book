@@ -53,13 +53,12 @@ export class AuthenticationService {
                     password: password,
                     returnSecureToken: true
                   }
-                ).pipe(
-                    (catchError(this.errorHandler),
-                    tap(resData => {
-                        this.handleAuth(
-                         resData.email, resData.localId, resData.idToken, +resData.expiresIn); // '+' infront like ParseInt AND parseFloat
-                    }
-                 )));
+                ).pipe(catchError(this.errorHandler),
+                tap(resData => {
+                    this.handleAuth(
+                        resData.email, resData.localId, resData.idToken, +resData.expiresIn); // '+' infront like ParseInt AND parseFloat
+                }),
+                );
         }
 
         // method to handle sign in, for login and from successful registration
