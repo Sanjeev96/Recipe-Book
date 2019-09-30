@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthenticationService, AuthResponseData } from './authentication.service';
 import { Observable, fromEvent, merge, of } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
@@ -19,7 +20,7 @@ export class AuthenticationComponent implements OnInit {
   connection: any;
 
 
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService, private router: Router) {
 
    }
 
@@ -62,6 +63,7 @@ export class AuthenticationComponent implements OnInit {
     authObs.subscribe(resData => {
       setTimeout(() => {
         this.isLoading = false;
+        this.router.navigate(['/recipe-book']);
       }, 2000);
     },
     errorMessage => {
