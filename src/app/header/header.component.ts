@@ -9,7 +9,7 @@ import { Subscription, empty } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   public from_firstNestApi_forename: string;
   public from_firstNestApi_surname: string;
   userSub: Subscription;
@@ -55,7 +55,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
   this.userSub.unsubscribe();
   }
 
-  OnDestroy() {
-  this.onLogout();
-  }
 }

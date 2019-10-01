@@ -3,7 +3,7 @@ import { RecipeService } from 'src/app/RecipeBook/recipe.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError, Subject } from 'rxjs';
+import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 
 
@@ -20,14 +20,10 @@ export interface AuthResponseData { // good practice to define the types of data
 @Injectable({providedIn: 'root'}) // can add file here or in appmodule like other files and services
 export class AuthenticationService {
 
-    user = new Subject<User>();
+    user = new BehaviorSubject<User>(null);
 
 
-    constructor (
-        private dataStorage: DataStorageService,
-       private recipeService: RecipeService,
-       private http: HttpClient
-        ) {}
+    constructor (private http: HttpClient) {}
 
         SendSignUp(email: string, password: string) {
            return this.http.post<AuthResponseData>(
