@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-  this.userSub.unsubscribe();
+    this.authService.Logout();
   }
 
 }

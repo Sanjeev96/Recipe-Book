@@ -17,7 +17,7 @@
               >Shopping List</a
             >
           </li>
-          <li>
+          <li *ngIf="!isLoggedIn">
               <a [routerLink]="['/auth']" routerLinkActive="active"
                 >Sign in page
                 </a
