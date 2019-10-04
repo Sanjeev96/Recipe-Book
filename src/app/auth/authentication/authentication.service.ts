@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
+import { Router } from '@angular/router';
 
 
 export interface AuthResponseData { // good practice to define the types of data that you get externally
@@ -23,7 +24,7 @@ export class AuthenticationService {
     user = new BehaviorSubject<User>(null);
 
 
-    constructor (private http: HttpClient) {}
+    constructor (private http: HttpClient, private route: Router) {}
 
         SendSignUp(email: string, password: string) {
            return this.http.post<AuthResponseData>(
@@ -57,12 +58,34 @@ export class AuthenticationService {
                 );
         }
 
+        autoLogin() {
+           const userData: {
+             email: string,
+             id: string,
+             _token: string, // private so it cant be accessed from here
+             _tokenEXPdate: string;
+                } = JSON.parse(localStorage.getItem('userKey')); // convert back from a string to object
+           if (!userData) {
+               return;
+           }
+           const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenEXPdate));
+           if (loadedUser.token) {
+              this.user.next(loadedUser); // This is our logged in user based on token expiry- see user model 'get token'
+           }
+        }
+
+        Logout() {
+            this.user.next(null);
+            this.route.navigate(['/auth']);
+        }
+
         // method to handle sign in, for login and from successful registration
         private handleAuth(email: string, userId: string, token: string, expIn: number) {
 
                 const expDate = new Date( new Date().getTime() + expIn * 1000);
                 const user = new User(email, userId, token, expDate);
                     this.user.next(user); // emit currenlty logged in user;
+                    localStorage.setItem('userKey', JSON.stringify(user));
         }
 
         private errorHandler(errorRes: HttpErrorResponse) { // error handled as a method as this logic is used twice, register and login
