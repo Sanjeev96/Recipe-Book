@@ -22,7 +22,7 @@ export interface AuthResponseData { // good practice to define the types of data
 export class AuthenticationService {
 
     user = new BehaviorSubject<User>(null);
-
+    private tokenExpDateTimer: any;
 
     constructor (private http: HttpClient, private route: Router) {}
 
@@ -71,12 +71,31 @@ export class AuthenticationService {
            const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenEXPdate));
            if (loadedUser.token) {
               this.user.next(loadedUser); // This is our logged in user based on token expiry- see user model 'get token'
+              const expDuration = new Date(userData._tokenEXPdate).getTime() - new Date().getTime();
+              this.autoLogout(expDuration);
            }
         }
 
         Logout() {
             this.user.next(null);
             this.route.navigate(['/auth']);
+            localStorage.removeItem('userKey'); // remove user details in localStorage
+            if (this.tokenExpDateTimer) { // if true-ish
+                clearTimeout(this.tokenExpDateTimer);
+            } else {
+                this.tokenExpDateTimer = null;
+            }
+        }
+
+
+        // ************************************************************************************************************** //
+                                            // METHODS BELOW USED BY OTHER METHODS //
+
+       private autoLogout(expDuration: number) {
+           this.tokenExpDateTimer =
+             setTimeout(() => {
+                this.Logout();
+            }, expDuration);
         }
 
         // method to handle sign in, for login and from successful registration
@@ -85,6 +104,7 @@ export class AuthenticationService {
                 const expDate = new Date( new Date().getTime() + expIn * 1000);
                 const user = new User(email, userId, token, expDate);
                     this.user.next(user); // emit currenlty logged in user;
+                    this.autoLogout(expIn * 1000 );
                     localStorage.setItem('userKey', JSON.stringify(user));
         }
 
