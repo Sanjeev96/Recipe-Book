@@ -10,6 +10,7 @@ import { RecipeStartPageComponent } from './RecipeBook/recipe-start-page/recipe-
 import { RecipeDetailsComponent } from './RecipeBook/recipe-details/recipe-details.component';
 import { RecipeResolverSerivce } from './RecipeBook/recipe/recipe-resolver.service';
 import { AuthenticationComponent } from './auth/authentication/authentication.component';
+import { AuthGuard } from './auth/authentication/auth-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   {
     path: 'recipe-book',
     component: RecipeComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: RecipeStartPageComponent },
       { path: 'new', component: RecipeEditComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthenticationComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
