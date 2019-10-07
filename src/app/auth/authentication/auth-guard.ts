@@ -14,8 +14,13 @@ export class AuthGuard implements CanActivate {
       return this.authService.user.
         pipe(
             map( user => {
-             return !!user;
+             return !!user; // SEE COMMENT BELOW
             }));
     }
-
 }
+
+/**
+ * Double '!!' purpose
+ * if an object or value is true-ish (in this case user object is not null then convert to boolean so it can be true)
+ * if an object or value is false-ish (in this case user object is null then convert to boolean so it can be false)
+ */
