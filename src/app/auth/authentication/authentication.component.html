@@ -43,7 +43,7 @@
     </div>
     <br>
     <br>
-    <app-alert-modal [message]="errorMessage" *ngIf="errorMessage"></app-alert-modal>
+    <app-alert-modal [message]="errorMessage" (close)="handleError()" *ngIf="errorMessage"></app-alert-modal>
     <!-- <div class="alert alert-danger" *ngIf="errorMessage">
         <h2>Error</h2>
         <p>{{errorMessage}}</p>

@@ -73,7 +73,9 @@ export class AuthenticationComponent implements OnInit {
     });
   }
 
-
+  handleError() {
+    this.errorMessage = null;
+  }
 
   sendPostError() {
     this.errorMessage = null;
