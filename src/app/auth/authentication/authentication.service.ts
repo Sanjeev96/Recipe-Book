@@ -21,6 +21,7 @@ export interface AuthResponseData { // good practice to define the types of data
 @Injectable({providedIn: 'root'}) // can add file here or in appmodule like other files and services
 export class AuthenticationService {
 
+    // 'BehaviorSubject' differs from 'Subject' in that 'BehaviorSubject' allows user to access previously value to ensure access to user.
     user = new BehaviorSubject<User>(null);
     private tokenExpDateTimer: any;
 
