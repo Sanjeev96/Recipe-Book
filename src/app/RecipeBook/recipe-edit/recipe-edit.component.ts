@@ -63,7 +63,6 @@ export class RecipeEditComponent implements OnInit {
       description: new FormControl(dishDescription, Validators.required),
       ingredients: recipeIngreds // setting recipe ingredient array to html
     });
-    console.log(recipeImagePath);
   }
 
   onAddIngredient() {

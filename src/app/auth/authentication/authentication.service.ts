@@ -72,7 +72,7 @@ export class AuthenticationService {
            if (loadedUser.token) {
               this.user.next(loadedUser); // This is our logged in user based on token expiry- see user model 'get token'
               const expDuration = new Date(userData._tokenEXPdate).getTime() - new Date().getTime();
-              this.autoLogout(expDuration);
+              this.autoLogout(expDuration); // tokenEXP for firebase is 1 hr
            }
         }
 

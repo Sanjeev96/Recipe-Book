@@ -17,7 +17,6 @@ constructor(private http: HttpClient,
         // PUT  request used for sending mutiple sets of data i.e not one user but 5 user details, put replaces rather than adds
        return this.http.put('https://recipebookdb-c6817.firebaseio.com/recipes.json', recipes)
        .subscribe(postRecipes => {
-        console.log(postRecipes);
        });
     }
 

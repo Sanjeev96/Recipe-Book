@@ -29,7 +29,6 @@ export class AuthenticationComponent implements OnInit {
   public networkStatus() {
     this.online$.subscribe(value => {
       this.connection = `${value}`;
-      console.log(this.connection);
     });
   }
 

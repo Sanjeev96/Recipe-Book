@@ -35,8 +35,6 @@ export class HeaderComponent implements OnInit {
       // }
       // SHORT HAND OF ABOVE below
       this.isLoggedIn = user ? true : false;
-      console.log('user = ', user);
-      console.log('null user =', !user);
 
 
     });
