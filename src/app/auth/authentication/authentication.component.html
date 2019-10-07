@@ -43,18 +43,13 @@
     </div>
     <br>
     <br>
-    <div class="alert alert-danger" *ngIf="errorMessage">
+    <app-alert-modal [message]="errorMessage" *ngIf="errorMessage"></app-alert-modal>
+    <!-- <div class="alert alert-danger" *ngIf="errorMessage">
         <h2>Error</h2>
         <p>{{errorMessage}}</p>
         <br>
-        <button class="btn btn-danger" (click)="sendPostError()">Okay</button>
-      </div>
-      <!-- <div class="alert alert-danger" *ngIf="connection === 'false' && !errorMessage === 'EMAIL_EXISTS'">
-          <h2>No internet connection availiable</h2>
-          <p>Status : <b>OFFLINE</b></p>
-          <br>
-          <button class="btn btn-danger" (click)="CheckConnection()">Okay</button>
-        </div> -->
+        <button class="btn btn-danger" (click)="sendPostError()">Okay</button>  OLD MESSAGE
+   </div> -->
   </form>
   </div>
 </div>
