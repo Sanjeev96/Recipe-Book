@@ -9,7 +9,9 @@ import { AuthenticationComponent } from './auth/authentication/authentication.co
 const routes: Routes = [
   { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
   { path: 'auth', component: AuthenticationComponent },
-  // { path: '**', component: PageNotFoundComponent }
+
+  // { path: 'error', component: PageNotFoundComponent },
+  // { path: '**', redirectTo: '/error' }
 
 ];
 
