@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
         pipe(
        take(1), // get latest user value then unsubscribe stop obs being triggerd on each authgaurd
             map( user => {
-                console.log('user sub');
                 const isAuth = !!user; // SEE COMMENT BELOW //
                 if (isAuth) { // if it true cause by this stage is a boolean value
                     return true;

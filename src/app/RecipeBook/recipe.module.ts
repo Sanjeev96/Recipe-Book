@@ -9,6 +9,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RecipeRoutingModule } from './recipe-routing.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule ],
+        HttpClientModule,
+        RecipeRoutingModule
+    ],
     exports: [
         RecipeListComponent,
         RecipeItemsComponent,

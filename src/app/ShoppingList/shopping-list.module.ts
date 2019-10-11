@@ -6,6 +6,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ShoppingListRoutingModule } from './shopping-list-routing.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        ShoppingListRoutingModule
     ],
     exports: [
         ShoppingListComponent,
