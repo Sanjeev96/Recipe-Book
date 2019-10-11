@@ -25,8 +25,6 @@ const recipeRoutes: Routes = [
           },
         ],
       },
-      { path: '**', component: PageNotFoundComponent }
-
 ];
 
 @NgModule({
