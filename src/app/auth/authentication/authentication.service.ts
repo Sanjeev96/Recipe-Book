@@ -18,7 +18,9 @@ export interface AuthResponseData { // good practice to define the types of data
     registered?: boolean; // ? means optional
    }
 
-@Injectable({providedIn: 'root'}) // can add file here or in appmodule like other files and services
+   @Injectable({
+    providedIn: 'root'
+  }) // can add file here or in appmodule like other files and services
 export class AuthenticationService {
 
     // 'BehaviorSubject' differs from 'Subject' in that 'BehaviorSubject' allows user to access previously value to ensure access to user.

@@ -33,13 +33,14 @@ import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component'
     IngredientsComponent,
     RecipeListComponent,
     RecipeItemsComponent,
+    RecipeStartPageComponent,
+    RecipeEditComponent,
     RecipeDetailsComponent,
     RecipeComponent,
     HeaderComponent,
     DropdownDirective,
     PageNotFoundComponent,
-    RecipeStartPageComponent,
-    RecipeEditComponent,
+
     AuthenticationComponent,
     LoadingSpinnerComponent,
     AlertModalComponent
@@ -52,9 +53,6 @@ import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component'
     HttpClientModule
   ],
   providers: [
-    DataStorageService,
-    RecipeService,
-    RecipeResolverSerivce,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
