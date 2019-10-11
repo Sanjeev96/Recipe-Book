@@ -2,9 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShoppingListComponent } from './ShoppingList/shopping-list/shopping-list.component';
-import { IngredientsComponent } from './ShoppingList/ingredients/ingredients.component';
-import { ShoppingEditComponent } from './ShoppingList/shopping-edit/shopping-edit.component';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './Shared/dropdown.directive';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -15,14 +12,12 @@ import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinne
 import { AuthInterceptorService } from './auth/authentication/auth-Interceptor.service';
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
 import { RecipeModule } from './RecipeBook/recipe.module';
+import { ShoppingListModule } from './ShoppingList/shopping-list.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    IngredientsComponent,
     HeaderComponent,
     DropdownDirective,
     PageNotFoundComponent,
@@ -37,6 +32,7 @@ import { RecipeModule } from './RecipeBook/recipe.module';
     ReactiveFormsModule,
     HttpClientModule,
     RecipeModule,
+    ShoppingListModule
   ],
   providers: [
     {
