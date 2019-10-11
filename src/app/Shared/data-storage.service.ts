@@ -27,9 +27,9 @@ constructor(private http: HttpClient,
         take(1),
           exhaustMap(user => {
             return this.http.get<Recipe[]>('https://recipebookdb-c6817.firebaseio.com/recipes.json', 
-              {
-                params: new HttpParams().set('auth', user.token)
-              }
+              // {
+              //   params: new HttpParams().set('auth', user.token)
+              // } ONLY DONE IF USED FOR SINGLE REQ ... FOR ALL REQUESTS USE INTERCEPTOR
         );
       }),
          map(recipes => {
