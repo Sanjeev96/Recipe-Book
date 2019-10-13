@@ -10,6 +10,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeRoutingModule } from './recipe-routing.module';
+import { DropdownDirective } from '../Shared/dropdown.directive';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,8 @@ import { RecipeRoutingModule } from './recipe-routing.module';
     RecipeEditComponent,
     RecipeDetailsComponent,
     RecipeComponent,
+    DropdownDirective,
+
     ],
     imports: [
         CommonModule,
@@ -35,6 +38,7 @@ import { RecipeRoutingModule } from './recipe-routing.module';
         RecipeEditComponent,
         RecipeDetailsComponent,
         RecipeComponent,
+        DropdownDirective,
     ],
     providers: [],
 })
