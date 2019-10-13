@@ -5,7 +5,6 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { ShoppingListRoutingModule } from './shopping-list-routing.module';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { ShoppingListRoutingModule } from './shopping-list-routing.module';
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule,
         ShoppingListRoutingModule
     ],
     exports: [

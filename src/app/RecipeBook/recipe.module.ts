@@ -8,7 +8,6 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { RecipeComponent } from './recipe/recipe.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { DropdownDirective } from '../Shared/dropdown.directive';
 
@@ -28,7 +27,6 @@ import { DropdownDirective } from '../Shared/dropdown.directive';
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule,
         RecipeRoutingModule
     ],
     exports: [

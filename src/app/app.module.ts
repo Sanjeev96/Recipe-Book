@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { DropdownDirective } from './Shared/dropdown.directive';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +18,6 @@ import { ShoppingListModule } from './ShoppingList/shopping-list.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    // DropdownDirective,
     PageNotFoundComponent,
     AuthenticationComponent,
     LoadingSpinnerComponent,
