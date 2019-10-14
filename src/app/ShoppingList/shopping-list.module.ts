@@ -4,8 +4,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingListRoutingModule } from './shopping-list-routing.module';
+import { SharedModule } from '../Shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -14,10 +14,8 @@ import { ShoppingListRoutingModule } from './shopping-list-routing.module';
         IngredientsComponent,
     ],
     imports: [
-        CommonModule,
         AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
+        SharedModule,
         ShoppingListRoutingModule
     ],
     exports: [
