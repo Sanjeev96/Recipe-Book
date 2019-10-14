@@ -4,7 +4,6 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/authentication/auth-guard';
 import { SharedModule } from '../Shared/shared.module';
