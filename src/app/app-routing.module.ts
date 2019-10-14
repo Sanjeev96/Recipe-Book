@@ -6,8 +6,10 @@ import { CommonModule } from '@angular/common';
 const routes: Routes = [
   { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
 
-  // { path: 'error', component: PageNotFoundComponent },
-  // { path: '**', redirectTo: '/error' }
+  {
+    path: 'auth',
+    loadChildren: './auth/authentication.module#AuthenticationModule'
+  }
 ];
 
 @NgModule({
@@ -18,3 +20,10 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+
+/**
+ * loadChildren is part of lazyloading
+ * lazyloading: loading modules when they are needed/used not at runtime
+ * benifits: reducing the amount of time the app runs by reducing the traffic
+ */

@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
     imports: [
         SharedModule,
         RouterModule.forChild([
-            {path: 'auth', component: AuthenticationComponent}
+            {path: '', component: AuthenticationComponent}
         ])
      ],
     exports: [

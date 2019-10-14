@@ -8,7 +8,6 @@ import { AuthInterceptorService } from './auth/authentication/auth-Interceptor.s
 import { RecipeModule } from './RecipeBook/recipe.module';
 import { ShoppingListModule } from './ShoppingList/shopping-list.module';
 import { SharedModule } from './Shared/shared.module';
-import { AuthenticationModule } from './auth/authentication.module';
 
 
 @NgModule({
@@ -22,7 +21,6 @@ import { AuthenticationModule } from './auth/authentication.module';
     HttpClientModule,
     RecipeModule,
     ShoppingListModule,
-    AuthenticationModule,
     SharedModule
   ],
   providers: [
