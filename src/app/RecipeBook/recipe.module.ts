@@ -7,7 +7,6 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeRoutingModule } from './recipe-routing.module';
-import { DropdownDirective } from '../Shared/dropdown.directive';
 import { SharedModule } from '../Shared/shared.module';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { SharedModule } from '../Shared/shared.module';
     RecipeEditComponent,
     RecipeDetailsComponent,
     RecipeComponent,
-    DropdownDirective,
 
     ],
     imports: [
@@ -33,7 +31,6 @@ import { SharedModule } from '../Shared/shared.module';
         RecipeEditComponent,
         RecipeDetailsComponent,
         RecipeComponent,
-        DropdownDirective,
     ],
     providers: [],
 })
