@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: './auth/authentication.module#AuthenticationModule'
+  },
+  {
+    path: 'recipe-book',
+    loadChildren: './RecipeBook/recipe.module#RecipeModule'
   }
 ];
 
