@@ -8,7 +8,6 @@ const routes: Routes = [
 
   // { path: 'error', component: PageNotFoundComponent },
   // { path: '**', redirectTo: '/error' }
-
 ];
 
 @NgModule({
