@@ -4,12 +4,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { AlertModalComponent } from './alert-modal/alert-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownDirective } from './dropdown.directive';
 
 @NgModule({
     declarations: [
         PageNotFoundComponent,
         LoadingSpinnerComponent,
-        AlertModalComponent
+        AlertModalComponent,
+        DropdownDirective
     ],
     imports: [
         CommonModule,
@@ -20,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         PageNotFoundComponent,
         LoadingSpinnerComponent,
         AlertModalComponent,
+        DropdownDirective,
         CommonModule,
         FormsModule,
         ReactiveFormsModule
