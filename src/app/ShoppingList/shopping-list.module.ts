@@ -7,6 +7,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/authentication/auth-guard';
+import { SharedModule } from '../Shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -16,8 +17,7 @@ import { AuthGuard } from '../auth/authentication/auth-guard';
     ],
     imports: [
         AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
+        SharedModule,
         RouterModule.forChild([
             {
                 path: 'shopping-list',
