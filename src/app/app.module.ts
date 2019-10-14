@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationComponent } from './auth/authentication/authentication.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
@@ -12,6 +11,7 @@ import { AuthInterceptorService } from './auth/authentication/auth-Interceptor.s
 import { AlertModalComponent } from './Shared/alert-modal/alert-modal.component';
 import { RecipeModule } from './RecipeBook/recipe.module';
 import { ShoppingListModule } from './ShoppingList/shopping-list.module';
+import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
 
 
 @NgModule({

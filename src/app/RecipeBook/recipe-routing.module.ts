@@ -7,8 +7,6 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeResolverSerivce } from './recipe/recipe-resolver.service';
 import { AuthGuard } from '../auth/authentication/auth-guard';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-
 const recipeRoutes: Routes = [
     {
         path: 'recipe-book',
