@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'recipe-book',
     loadChildren: './RecipeBook/recipe.module#RecipeModule'
+  },
+  {
+    path: 'shopping-list',
+    loadChildren: './ShoppingList/shopping-list.module#ShoppingListModule'
   }
 ];
 

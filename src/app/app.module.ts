@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './auth/authentication/auth-Interceptor.service';
-import { ShoppingListModule } from './ShoppingList/shopping-list.module';
 import { SharedModule } from './Shared/shared.module';
 
 
@@ -18,7 +17,6 @@ import { SharedModule } from './Shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ShoppingListModule,
     SharedModule
   ],
   providers: [
