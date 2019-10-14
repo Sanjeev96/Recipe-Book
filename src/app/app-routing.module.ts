@@ -8,15 +8,21 @@ const routes: Routes = [
 
   {
     path: 'auth',
-    loadChildren: './auth/authentication.module#AuthenticationModule'
+    loadChildren: () => import('./auth/authentication.module').then(
+      m => m.AuthenticationModule
+    )
   },
   {
     path: 'recipe-book',
-    loadChildren: './RecipeBook/recipe.module#RecipeModule'
+    loadChildren: () => import('./RecipeBook/recipe.module').then(
+      m => m.RecipeModule
+    )
   },
   {
     path: 'shopping-list',
-    loadChildren: './ShoppingList/shopping-list.module#ShoppingListModule'
+    loadChildren: () => import('./ShoppingList/shopping-list.module').then(
+      m => m.ShoppingListModule
+    )
   }
 ];
 

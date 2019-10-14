@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/authentication/auth-guard';
 import { SharedModule } from '../Shared/shared.module';
@@ -15,7 +14,6 @@ import { SharedModule } from '../Shared/shared.module';
         IngredientsComponent,
     ],
     imports: [
-        AppRoutingModule,
         SharedModule,
         RouterModule.forChild([
             {
