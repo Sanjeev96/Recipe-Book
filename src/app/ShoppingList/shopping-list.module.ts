@@ -5,7 +5,8 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ShoppingListRoutingModule } from './shopping-list-routing.module';
+import { RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth/authentication/auth-guard';
 
 @NgModule({
     declarations: [
@@ -18,12 +19,19 @@ import { ShoppingListRoutingModule } from './shopping-list-routing.module';
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        ShoppingListRoutingModule
+        RouterModule.forChild([
+            {
+                path: 'shopping-list',
+                component: ShoppingListComponent,
+                canActivate: [AuthGuard]
+               }
+        ]),
     ],
     exports: [
         ShoppingListComponent,
         ShoppingEditComponent,
         IngredientsComponent,
+        RouterModule
     ],
     providers: [],
 })
