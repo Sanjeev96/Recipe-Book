@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
@@ -10,25 +10,30 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/authentication.module').then(
       m => m.AuthenticationModule
-    )
+    ),
+    data: { preload: true }
   },
   {
     path: 'recipe-book',
     loadChildren: () => import('./RecipeBook/recipe.module').then(
       m => m.RecipeModule
-    )
+    ),
+    data: { preload: true }
   },
   {
     path: 'shopping-list',
     loadChildren: () => import('./ShoppingList/shopping-list.module').then(
       m => m.ShoppingListModule
-    )
+    ),
+    data: { preload: true }
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,
+      { preloadingStrategy: PreloadAllModules}
+      ),
     CommonModule
   ],
   exports: [RouterModule]
