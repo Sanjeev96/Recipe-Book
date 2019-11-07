@@ -6,6 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 
 export interface AuthResponseData { // good practice to define the types of data that you get externally
@@ -31,7 +32,7 @@ export class AuthenticationService {
 
         SendSignUp(email: string, password: string) {
            return this.http.post<AuthResponseData>(
-               'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCQt6uCFPbnkAzNsc0tThkavqNJYGyYRPI'
+               'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.fbApiKey
             , {
                 email: email,
                 password: password,
@@ -47,7 +48,7 @@ export class AuthenticationService {
 
         Login(email: string, password: string) {
             return this.http.post<AuthResponseData>(
-                'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCQt6uCFPbnkAzNsc0tThkavqNJYGyYRPI',
+                'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.fbApiKey,
                 {
                     email: email,
                     password: password,
