@@ -1,18 +1,48 @@
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { RecipeComponent } from './RecipeBook/recipe/recipe.component';
-import { ShoppingListComponent } from './ShoppingList/shopping-list/shopping-list.component';
+import { CommonModule } from '@angular/common';
+// import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/list', pathMatch: 'full' },
-  // { path: 'recipes', component: RecipeComponent },
-  // { path: 'list', component: ShoppingListComponent }
-]; 
+  { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
+
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/authentication.module').then(
+      m => m.AuthenticationModule
+    ),
+    data: { preload: true }
+  },
+  {
+    path: 'recipe-book',
+    loadChildren: () => import('./RecipeBook/recipe.module').then(
+      m => m.RecipeModule
+    ),
+    data: { preload: true }
+  },
+  {
+    path: 'shopping-list',
+    loadChildren: () => import('./ShoppingList/shopping-list.module').then(
+      m => m.ShoppingListModule
+    ),
+    data: { preload: true }
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes,
+      { preloadingStrategy: PreloadAllModules}
+      ),
+    CommonModule
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 
-// export const routingcomponents = [ RecipeComponent, ShoppingListComponent]
+
+/**
+ * loadChildren is part of lazyloading
+ * lazyloading: loading modules when they are needed/used not at runtime
+ * benifits: reducing the amount of time the app runs by reducing the traffic
+ */

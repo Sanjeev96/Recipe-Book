@@ -1,0 +1,12 @@
+.fieldSpacing {
+  padding-bottom: 6%;
+}
+
+.btnSpacing {
+  padding-left: 2%;
+}
+input.ng-invalid .ng-touched ,
+  textarea.ng-invalid .ng-touched {
+    border: 2px solid red;
+  }
+

@@ -1,21 +1,54 @@
+<!-- THIS FORM USED THE REACTIVE FORM APPROACH -->
 <div class="row">
   <div class="col-mid-12">
-    <form>
+    <form [formGroup]="shopEditForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name: </label>
-          <input type="text" id="name" placeholder="Item Name" class="form-control" #nameInput>
+          <input
+            type="text"
+            formControlName="itemName"
+            placeholder="Item Name"
+            class="form-control"
+          />
+          <span
+            class="help-block"
+            *ngIf="
+              shopEditForm.get('itemName').invalid &&
+              shopEditForm.get('itemName').touched
+            "
+            >field Required</span
+          >
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount:</label>
-          <input type="number" id="amount" placeholder="Quantity" class="form-control" #amountInput>
+          <input
+            type="number"
+            formControlName="amount"
+            placeholder="Quantity"
+            class="form-control"
+          />
+          <span
+            class="help-block"
+            *ngIf="
+              shopEditForm.get('amount').invalid &&
+              shopEditForm.get('itemName').touched
+            "
+            >field Required</span
+          >
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" (click)="addIngredient()" type="button">Add</button>&nbsp;
-          <button class="btn btn-danger" type="button">Delete</button>&nbsp;
-          <button class="btn btn-primary" (click)="clearAddFields()" type="button">Clear</button>
+          <button class="btn btn-success" [disabled]='shopEditForm.invalid' type="submit">{{ editmode ? 'update': 'Add'}}</button>&nbsp; <!--if else statment colon is else-->
+          <button *ngIf="editmode === true" class="btn btn-danger" (click)="onDelete()" type="button">Delete</button>&nbsp;
+          <button
+            class="btn btn-primary"
+            (click)="onClearAddFields()"
+            type="button"
+          >
+            Clear
+          </button>
         </div>
       </div>
     </form>

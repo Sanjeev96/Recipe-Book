@@ -8,10 +8,10 @@ export class Recipe {
 
 
     // shorter method created same effect
-    constructor( public name: string, public desc: string, public imagePath: string, public ingredients: Ingredients[]) {
+    constructor( public name: string, public description: string, public imagePath: string, public ingredients: Ingredients[]) {
 
         // this.name = name;
-        // this.description = desc;
+        // this.description = description;
         // this.imagePath = imagePath;
 
     }
