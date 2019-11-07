@@ -1,7 +1,6 @@
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipe-book', pathMatch: 'full' },
